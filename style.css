@@ -48,6 +48,14 @@ body {
     color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
+    display: inline-block;
+    height: 4rem;
+}
+
+.logo img{
+    position: relative;
+    color: var(--text-color);
+    width: 50px;
 }
 
 .nav-list{
@@ -71,16 +79,68 @@ body {
     border-bottom: 2px solid var(--main-color);
 }
 
+
+/* SLIDER */
+
+.slider-wrapper{
+    position: relative;
+    max-width: 80rem;
+    margin: 0 auto;  
+    transition: opacity ease 0.25s;
+}
+
+.slider{
+    display: flex;
+    aspect-ratio: 16/9;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
+    border-radius: 0.5rem;
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
+    background-color: var(--text-color);
+}
+
+.slider::-webkit-scrollbar {
+    display: none; 
+}
+
+.slider img{
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    object-fit: cover;
+    opacity: .60;
+}
+
+.slider-nav{
+    display: flex;
+    column-gap: 1rem;
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.slider-nav a{
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    opacity: 0.75;
+    transition: opacity ease 0.25s;
+}
+
+.slider-nav a:hover{
+    opacity: 1;
+}
+
 /* HOME */
 
 .home {
      background-color: var(--bg-color);
-     height: 100dvh;
-     display: flex;
-     align-items: center;
-     padding: 0 10%;
-     justify-content: center;
-     align-items: center;
+     padding: 7rem 2rem;
  }
 
  .home-content{
@@ -89,9 +149,13 @@ body {
  }
 
  .home-content h1{
-    position: relative;
+    position: absolute;
     font-size: 100px;
-    padding-bottom: 5px;
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 4rem;
+    color: var(--bg-color);
  }
 
  .home-content h1 span{
@@ -99,28 +163,19 @@ body {
  }
 
  .home-content h3 {
-    position: relative;
+    position: absolute;
     font-size: 40px;
-    text-align: center;
-    background: linear-gradient(90deg, rgba(99, 11, 33, 1) 25%, rgba(237, 27, 46, 1) 59%, rgba(255, 0, 0, 1) 84%);
-    -webkit-background-clip: text; /* For Safari */
+    background: linear-gradient(90deg, rgba(0,0,0,1) 8%, rgba(237,27,46,1) 44%, rgba(255,0,0,1) 68%);
+    -webkit-background-clip: text; 
     background-clip: text;
+    background-size: 300%;
     color: transparent;
-    animation: gradientAnimation 5s infinite; /* Adjust animation duration as needed */
+    animation: gradientAnimation 10s infinite; 
+    z-index: 10;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 4rem;
 }
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
 
 .home-content p{
     width: 100%;
@@ -135,6 +190,8 @@ body {
     width: 200px;
     display: flex;
     justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .home-sci a{
@@ -162,6 +219,10 @@ body {
 
 .home-sci a:hover::before{
     width: 100%;
+}
+
+.slider-wrapper:hover img{
+    opacity: 1;
 }
 
 /* JUGADORES */
@@ -325,4 +386,21 @@ body {
 
 .footer-iconTop a:hover i{
     color: var(--main-color);
+}
+
+/* ANIMACIONES */
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    33.33% {
+        background-position: 100% 50%;
+    }
+    66.67% {
+        background-position: 200% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
 }
